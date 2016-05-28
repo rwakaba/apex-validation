@@ -1,37 +1,37 @@
 public class DefaultValidator {
 
-	private Validation.Results results { get; private set; }
+	public ValidationResults results { get; private set; }
 
 	public DefaultValidator() {
-		results = new Validation.Results();
+		results = new ValidationResults();
 	}
 
-	public Validation.InputResult checkRequired(String name, Object value) {
-		Validation.InputResult r = Validation.checkRequired(value);
+	public InputResult checkRequired(String name, Object value) {
+		InputResult r = Validation.checkRequired(value);
 		results.put(name, r);
 		return r;
 	}
 
-	public Validation.InputResult checkPattern(String name, String value, String regex, String label) {
-		Validation.InputResult r = Validation.checkPattern(value, regex, label);
+	public InputResult checkPattern(String name, String value, String regex, String label) {
+		InputResult r = Validation.checkPattern(value, regex, label);
 		results.put(name, r);
 		return r;
 	}
 
-	public Validation.InputResult checkLength(String name, String value, Integer len) {
-		Validation.InputResult r = Validation.checkLength(value, len);
+	public InputResult checkLength(String name, String value, Integer len) {
+		InputResult r = Validation.checkLength(value, len);
 		results.put(name, r);
 		return r;
 	}
 
-	public Validation.InputResult checkMax(String name, String value, Integer max) {
-		Validation.InputResult r = Validation.checkMax(value, max);
+	public InputResult checkMax(String name, String value, Integer max) {
+		InputResult r = Validation.checkMax(value, max);
 		results.put(name, r);
 		return r;
 	}
 
-	public Validation.InputResult checkMin(String name, String value, Integer min) {
-		Validation.InputResult r = Validation.checkMin(value, min);
+	public InputResult checkMin(String name, String value, Integer min) {
+		InputResult r = Validation.checkMin(value, min);
 		results.put(name, r);
 		return r;
 	}

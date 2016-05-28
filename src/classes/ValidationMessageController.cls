@@ -9,4 +9,8 @@ public class MessageController {
     public Boolean isPattern{ get { return hasError && result.isPattern; }}
     public Boolean isMax { get { return hasError && result.isMax; }}
     public Boolean isMin { get { return hasError && result.isMin; }}
+
+	public Boolean showRequirementError {
+		get { return result.isRequired; }
+	}
 }

@@ -84,7 +84,7 @@ public class Validation {
 			getResults(name).add(r);
 		}
 		//public InputResult result(String key) { return results.get(key); }
-		
+
 		public Boolean hasError(String key) {
 			return results.containsKey(key);
 		}
@@ -99,16 +99,16 @@ public class Validation {
 		}
 	}
 
-    public virtual class InputResult {
+	public virtual class InputResult {
 		public virtual Boolean valid() { return false; }
 		public virtual Boolean inValid() { return !valid(); }
 		public virtual String validContent() { return null; }
 
-        public virtual Boolean notInput() { return false; }
-        public virtual Boolean tooLong() { return false; }
-        public virtual Boolean badPattern() { return false; }
-        public virtual Boolean bigValue() { return false; }
-        public virtual Boolean smallValue() { return false; }
+		public virtual Boolean notInput() { return false; }
+		public virtual Boolean tooLong() { return false; }
+		public virtual Boolean badPattern() { return false; }
+		public virtual Boolean bigValue() { return false; }
+		public virtual Boolean smallValue() { return false; }
 
 	}
 

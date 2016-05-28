@@ -77,6 +77,9 @@ public class Validation {
 		}
 	}
 
+	/**
+	 * holding all validatin results class.
+	 */
 	public class Results {
 		private Map<String, List<InputResult>> results = new Map<String, List<InputResult>>();
 
@@ -99,6 +102,9 @@ public class Validation {
 		}
 	}
 
+	/**
+	 * represent one validation result class.
+	 */
 	public virtual class InputResult {
 		public virtual Boolean valid() { return false; }
 		public virtual Boolean inValid() { return !valid(); }
@@ -115,6 +121,7 @@ public class Validation {
 	public class Valid extends InputResult {
 		public override Boolean valid() { return true;}
 	}
+
 	public class InValid extends InputResult {
 	}
 
@@ -122,6 +129,7 @@ public class Validation {
 		public Integer value { get; private set; }
 		public override Boolean notInput() { return true; }
 	}
+
 	public class TooLong extends InputResult {
 		public Integer value { get; private set; }
 		public TooLong(Integer value) {

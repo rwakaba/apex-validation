@@ -1,5 +1,9 @@
 public class Validation {
 
+	/**
+	 * check the value to be input
+	 * @param value [Object] input value
+	 */
 	public static InputResult checkRequired(Object value) {
 		Boolean input = false;
 		if (value != null) {
@@ -13,6 +17,63 @@ public class Validation {
 			return new Valid();
 		} else {
 			return new NotInput();
+		}
+	}
+
+	/**
+	 * check the value to be not over length
+	 * @param value [String] input value
+	 */
+	public static InputResult checkLength(String value, Integer max) {
+		if (value != null && value.length() > max) {
+			return new TooLong(max);
+		}
+		return new Valid();
+	}
+
+	/**
+	 * check the value to be match the pattern
+	 * @param value [String] input value
+	 */
+	public static InputResult checkPattern(String value, String regex, String label) {
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(value);
+
+		if (!m.matches()) {
+			return new BadPattern(label);
+		}
+		return new Valid();
+	}
+
+	/**
+	 * check the value to be not over max value
+	 * @param value [String] input value
+	 */
+	public static InputResult checkMax(String value, Integer max) {
+		try {
+			Integer i = Integer.valueOf(value);
+			if (i > max) {
+				return new BigValue(max);
+			}
+			return new Valid();
+		} catch (TypeException e) {
+			return new InValid();
+		}
+	}
+
+	/**
+	 * check the value to be not over min value
+	 * @param value [String] input value
+	 */
+	public static InputResult checkMin(String value, Integer min) {
+		try {
+			Integer i = Integer.valueOf(value);
+			if (i < min) {
+				return new SmallValue(min);
+			}
+			return new Valid();
+		} catch (TypeException e) {
+			return new InValid();
 		}
 	}
 
@@ -46,13 +107,15 @@ public class Validation {
         public virtual Boolean notInput() { return false; }
         public virtual Boolean tooLong() { return false; }
         public virtual Boolean badPattern() { return false; }
-        public virtual Boolean overValue() { return false; }
-        public virtual Boolean shortValue() { return false; }
+        public virtual Boolean bigValue() { return false; }
+        public virtual Boolean smallValue() { return false; }
 
 	}
 
 	public class Valid extends InputResult {
 		public override Boolean valid() { return true;}
+	}
+	public class InValid extends InputResult {
 	}
 
 	public class NotInput extends InputResult {
@@ -81,26 +144,26 @@ public class Validation {
 		public override Boolean badPattern() { return true; }
 	}
 
-	public class OverValue extends InputResult {
+	public class BigValue extends InputResult {
 		public Integer value { get; private set; }
-		public OverValue(Integer value) {
+		public BigValue(Integer value) {
 			this.value = value;
 		}
 		public override String validContent() {
 			return String.valueOf(value);
 		}
-		public override Boolean overValue() { return true; }
+		public override Boolean bigValue() { return true; }
 	}
 
-	public class ShortValue extends InputResult {
+	public class SmallValue extends InputResult {
 		public Integer value { get; private set; }
-		public ShortValue(Integer value) {
+		public SmallValue(Integer value) {
 			this.value = value;
 		}
 		public override String validContent() {
 			return String.valueOf(value);
 		}
-		public override Boolean shortValue() { return true; }
+		public override Boolean smallValue() { return true; }
 	}
 }
 

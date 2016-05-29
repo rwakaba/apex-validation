@@ -54,9 +54,6 @@ public virtual class InputResult {
         }
     }
 
-    public class InvalidMail extends InputResult {
-    }
-
     public class CustomRuleError extends InputResult {
         private String message;
         public CustomRuleError(String message) {

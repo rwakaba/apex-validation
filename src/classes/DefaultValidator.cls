@@ -41,12 +41,6 @@ public class DefaultValidator {
         return r;
     }
 
-    public InputResult checkMail(String name, String value, Validation.MailFormat format, String label) {
-        InputResult r = Validation.checkMail(value, format, label);
-        results.put(name, r);
-        return r;
-    }
-
     public InputResult checkCustomRule(String name, String value, Validation.CustomRule rule, String label) {
         InputResult r = Validation.checkCustomRule(value, rule, label);
         results.put(name, r);

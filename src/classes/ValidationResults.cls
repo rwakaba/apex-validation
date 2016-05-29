@@ -27,6 +27,11 @@ public class ValidationResults {
         return false;
     }
 
+    /**
+     * Return validation result list of the name.
+     * @param name
+     * @return list of validatin result.
+     */
     public List<InputResult> getResults(String name) {
         if (!results.containsKey(name)) {
             List<InputResult> l = new List<InputResult>();

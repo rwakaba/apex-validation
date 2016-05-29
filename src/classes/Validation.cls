@@ -8,7 +8,7 @@ public class Validation {
         Boolean input = false;
         if (value != null) {
             if (value instanceof String) {
-                input = String.isEmpty((String) value);
+                input = !String.isEmpty((String) value);
             } else {
                 input = true;
             }

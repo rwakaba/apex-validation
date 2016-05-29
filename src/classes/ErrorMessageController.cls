@@ -12,22 +12,22 @@ public class ErrorMessageController {
 
     // ------------- helper property. -----------------
     public InputResult resultNotInput { get {
-        return getResult(new NotInputSpecifer());
+        return getResult(InputResult.Type.NotInput);
     }}
     public InputResult resultBadPattern { get {
-        return getResult(new BadPatternSpecifer());
+        return getResult(InputResult.Type.BadPattern);
     }}
     public InputResult resultTooLong { get {
-        return getResult(new TooLongSpecifer());
+        return getResult(InputResult.Type.TooLong);
     }}
     public InputResult resultBigValue { get {
-        return getResult(new BigValueSpecifer());
+        return getResult(InputResult.Type.BigValue);
     }}
     public InputResult resultSmallValue { get {
-        return getResult(new SmallValueSpecifer());
+        return getResult(InputResult.Type.SmallValue);
     }}
     public InputResult resultCustomRuleError { get {
-        return getResult(new CustomRuleErrorSpecifer());
+        return getResult(InputResult.Type.CustomRuleError);
     }}
 
     // ------------- For rendered property. -----------------
@@ -72,50 +72,14 @@ public class ErrorMessageController {
     }}
     
     // ---------------------- private ----------------------------
-    private InputResult getResult(Specifier s) {
+    private InputResult getResult(InputResult.Type type) {
         if (results != null) {
             for (InputResult r : results.getResults(key)) {
-                if (s.isInstance(r)) {
+                if (type == r.getType()) {
                     return r;
                 }
             }
         }
         return null;
-    }
-
-    // ---------------------- helper ----------------------------
-    private interface Specifier {
-        Boolean isInstance(InputResult result);
-    }
-
-    private class NotInputSpecifer implements Specifier {
-        public Boolean isInstance(InputResult result) {
-            return result instanceof InputResult.NotInput;
-        }
-    }
-    private class BadPatternSpecifer implements Specifier {
-        public Boolean isInstance(InputResult result) {
-            return result instanceof InputResult.BadPattern;
-        }
-    }
-    private class TooLongSpecifer implements Specifier {
-        public Boolean isInstance(InputResult result) {
-            return result instanceof InputResult.TooLong;
-        }
-    }
-    private class BigValueSpecifer implements Specifier {
-        public Boolean isInstance(InputResult result) {
-            return result instanceof InputResult.BigValue;
-        }
-    }
-    private class SmallValueSpecifer implements Specifier {
-        public Boolean isInstance(InputResult result) {
-            return result instanceof InputResult.SmallValue;
-        }
-    }
-    private class CustomRuleErrorSpecifer implements Specifier {
-        public Boolean isInstance(InputResult result) {
-            return result instanceof InputResult.CustomRuleError;
-        }
     }
 }

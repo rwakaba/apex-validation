@@ -4,12 +4,27 @@
 public class ValidationResults {
     private Map<String, List<InputResult>> results = new Map<String, List<InputResult>>();
 
-    public void put(String name, InputResult r) {
-        getResults(name).add(r);
+    /**
+     * Put validation result by name
+     * @param name
+     * @param result
+     */
+    public void put(String name, InputResult result) {
+        getResults(name).add(result);
     }
 
-    public Boolean hasError(String key) {
-        return results.containsKey(key);
+    /**
+     * Return true if error item exists.
+     */
+    public Boolean hasError() {
+        for (String key : results.keySet()) {
+            for (InputResult r : results.get(key)) {
+                if (!(r instanceof InputResult.Valid)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public List<InputResult> getResults(String name) {

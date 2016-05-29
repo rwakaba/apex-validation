@@ -68,4 +68,7 @@ public virtual class InputResult {
         }
         public override Boolean smallValue() { return true; }
     }
+
+    public class InvalidMail extends InputResult {
+    }
 }

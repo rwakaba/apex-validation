@@ -1,3 +1,8 @@
+/**
+ * Wrap validation logic and provide continueous validation execution.
+ *
+ * TODO trim handling switch
+ */
 public class DefaultValidator {
 
     public ValidationResults results { get; private set; }
@@ -32,6 +37,12 @@ public class DefaultValidator {
 
     public InputResult checkMin(String name, String value, Integer min) {
         InputResult r = Validation.checkMin(value, min);
+        results.put(name, r);
+        return r;
+    }
+
+    public InputResult checkMail(String name, String value, Validation.MailFormat format, String label) {
+        InputResult r = Validation.checkMail(value, format, label);
         results.put(name, r);
         return r;
     }

@@ -76,5 +76,23 @@ public class Validation {
             return new InputResult.InValid();
         }
     }
+
+    /**
+     * check the value to be match the pattern
+     * @param value [String] input value
+     */
+    public static InputResult checkMail(String value, MailFormat format, String label) {
+        if (format.isValid(value)) {
+            return new InputResult.InvalidMail();
+        }
+        return new InputResult.Valid();
+    }
+
+    /**
+     * Mail format interface.
+     */
+    public interface MailFormat {
+        Boolean isValid(String value);
+    }
 }
 

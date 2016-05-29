@@ -35,8 +35,8 @@ public virtual class InputResult {
     }
 
     public class BigValue extends InputResult {
-        public Integer value { get; private set; }
-        public BigValue(Integer value) {
+        public Decimal value { get; private set; }
+        public BigValue(Decimal value) {
             this.value = value;
         }
         public override String getValidContent() {
@@ -45,8 +45,8 @@ public virtual class InputResult {
     }
 
     public class SmallValue extends InputResult {
-        public Integer value { get; private set; }
-        public SmallValue(Integer value) {
+        public Decimal value { get; private set; }
+        public SmallValue(Decimal value) {
             this.value = value;
         }
         public override String getValidContent() {

@@ -48,11 +48,12 @@ public class Validation {
     /**
      * check the value to be not over max value
      * @param value [String] input value
+     * @param max [Decimal] max value
      */
-    public static InputResult checkMax(String value, Integer max) {
+    public static InputResult checkMax(String value, Decimal max) {
         try {
-            Integer i = Integer.valueOf(value);
-            if (i > max) {
+            Decimal d = Decimal.valueOf(value);
+            if (d > max) {
                 return new InputResult.BigValue(max);
             }
             return new InputResult.Valid();
@@ -64,11 +65,12 @@ public class Validation {
     /**
      * check the value to be not over min value
      * @param value [String] input value
+     * @param max [Decimal] max value
      */
-    public static InputResult checkMin(String value, Integer min) {
+    public static InputResult checkMin(String value, Decimal min) {
         try {
-            Integer i = Integer.valueOf(value);
-            if (i < min) {
+            Decimal d = Decimal.valueOf(value);
+            if (d < min) {
                 return new InputResult.SmallValue(min);
             }
             return new InputResult.Valid();

@@ -29,13 +29,13 @@ public class DefaultValidator {
         return r;
     }
 
-    public InputResult checkMax(String name, String value, Integer max) {
+    public InputResult checkMax(String name, String value, Decimal max) {
         InputResult r = Validation.checkMax(value, max);
         results.put(name, r);
         return r;
     }
 
-    public InputResult checkMin(String name, String value, Integer min) {
+    public InputResult checkMin(String name, String value, Decimal min) {
         InputResult r = Validation.checkMin(value, min);
         results.put(name, r);
         return r;

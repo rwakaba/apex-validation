@@ -1,4 +1,4 @@
-<apex:component controller="MessageController" >
+<apex:component controller="ErrorMessageController" >
 
     <apex:attribute name="validationResults" type="ValidationResults" required="true" description="" assignTo="{!results}"/>
 
@@ -13,22 +13,22 @@
 
 	<!-- 形式エラー -->
     <apex:outputPanel rendered="{!showBadPatternError}" layout="none">
-		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!result.validContent}で入力してください</p>
+		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!resultBadPattern.validContent}で入力してください</p>
     </apex:outputPanel>
 
 	<!-- 文字数エラー -->
     <apex:outputPanel rendered="{!showTooLongError}" layout="none">
-		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!result.validContent}文字以下で入力してください</p>
+		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!resultTooLong.validContent}文字以下で入力してください</p>
     </apex:outputPanel>
 
 	<!-- 最大数数エラー -->
     <apex:outputPanel rendered="{!showBigError}" layout="none">
-		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!result.validContent}以下で入力してください</p>
+		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!resultBigValue.validContent}以下で入力してください</p>
     </apex:outputPanel>
 
 	<!-- 最小数数エラー -->
     <apex:outputPanel rendered="{!showSmallError}" layout="none">
-		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!result.validContent}以上で入力してください</p>
+		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!resultSmallValue.validContent}以上で入力してください</p>
     </apex:outputPanel>
 
 </apex:component>

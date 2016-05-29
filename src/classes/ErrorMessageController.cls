@@ -1,13 +1,17 @@
+/**
+ * Use with ErrorMessageComponent Controller.
+ */
 public class ErrorMessageController {
 
+    // ------------- Component Attributes property. -----------------
     public ValidationResults results { get; set; }
 
     public String key { get; set; }
 
+    // ------------- helper property. -----------------
     public InputResult resultNotInput { get {
         return getResult(new NotInputSpecifer());
     }}
-
     public InputResult resultBadPattern { get {
         return getResult(new BadPatternSpecifer());
     }}
@@ -17,10 +21,14 @@ public class ErrorMessageController {
     public InputResult resultBigValue { get {
         return getResult(new BigValueSpecifer());
     }}
-    public InputResult.SmallValue resultSmallValue { get {
+    public InputResult resultSmallValue { get {
         return getResult(new SmallValueSpecifer());
     }}
+    public InputResult resultCustomRuleError { get {
+        return getResult(new CustomRuleErrorSpecifer());
+    }}
 
+    // ------------- For rendered property. -----------------
     public Boolean showNotInputError {
         get { return resultNotInput != null; }
     }
@@ -36,6 +44,9 @@ public class ErrorMessageController {
     }
     public Boolean showSmallError {
         get { return resultSmallValue != null; }
+    }
+    public Boolean showCustomRule {
+        get { return resultCustomRuleError != null; }
     }
 
     // ---------------------- private ----------------------------
@@ -78,6 +89,11 @@ public class ErrorMessageController {
     private class SmallValueSpecifer implements Specifier {
         public Boolean isInstance(InputResult result) {
             return result instanceof InputResult.SmallValue;
+        }
+    }
+    private class CustomRuleErrorSpecifer implements Specifier {
+        public Boolean isInstance(InputResult result) {
+            return result instanceof InputResult.CustomRuleError;
         }
     }
 }

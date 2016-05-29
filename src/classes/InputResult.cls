@@ -3,6 +3,7 @@
  */
 public virtual class InputResult {
     public virtual String getValidContent() { return null; }
+    public virtual String getMessage() { return null; }
 
     public class Valid extends InputResult {
     }
@@ -54,5 +55,15 @@ public virtual class InputResult {
     }
 
     public class InvalidMail extends InputResult {
+    }
+
+    public class CustomRuleError extends InputResult {
+        private String message;
+        public CustomRuleError(String message) {
+            this.message = message;
+        }
+        public override String getMessage() {
+            return message;
+        }
     }
 }

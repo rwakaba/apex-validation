@@ -46,4 +46,10 @@ public class DefaultValidator {
         results.put(name, r);
         return r;
     }
+
+    public InputResult checkCustomRule(String name, String value, Validation.CustomRule rule, String label) {
+        InputResult r = Validation.checkCustomRule(value, rule, label);
+        results.put(name, r);
+        return r;
+    }
 }

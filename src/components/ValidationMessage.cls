@@ -31,4 +31,8 @@
 		<p class="error-msg"><i class="icon icon-error"></i>{!label}は{!resultSmallValue.validContent}以上で入力してください</p>
     </apex:outputPanel>
 
+	<!-- 任意ルールエラー -->
+    <apex:outputPanel rendered="{!showCustomRule}" layout="none">
+		<p class="error-msg"><i class="icon icon-error"></i>{!resultCustomRuleError.message}</p>
+    </apex:outputPanel>
 </apex:component>
